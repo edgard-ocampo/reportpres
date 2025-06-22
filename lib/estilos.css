@@ -1,0 +1,232 @@
+.full-height {
+    height: 100vh; /* Altura completa de la ventana */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    flex-direction: column; /* Organizar los elementos en columna (uno debajo del otro) */
+    position: relative; /* Para posicionar el contenido correctamente */
+    text-align: center; /* Alinear el texto en el centro */
+}
+
+.full-height img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Coloca la imagen detrás del texto */
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Evitar que la imagen se salga del contenedor */
+    max-height: 100%;
+}
+
+/* Estilo para los textos */
+.full-height p {
+    color: black; /* El color blanco puede mejorar la visibilidad del texto */
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 1; /* Asegura que el texto esté sobre la imagen */
+}
+
+/* Estilo específico para el segundo texto */
+.full-height p:nth-child(3) {
+    font-size: 1.5rem; /* Tamaño ligeramente menor para el segundo texto */
+    margin-top: 0.5rem; /* Espacio entre los dos textos */
+}
+
+
+.item-number {
+    margin-right: 8px;
+}
+.list-group{
+	border-radius: 0;
+}
+.list-group-item {
+    border-radius: 0; /* Establece el borde redondeado a cero para que no haya bordes curvados */
+}
+/* Panel lateral adaptable a la altura del contenido */
+#sidePanel {
+    position: fixed;
+    top: 0;
+    right: -22rem; /* Panel fuera de la vista inicialmente */
+    width: 22rem;
+    max-height: 100vh; /* La altura máxima será la altura del navegador */
+    background-color: transparent;
+    color: white;
+    z-index: 1050;
+    transition: right 0.5s ease;
+    padding: 0px;
+    overflow-y: auto; /* Para crear un scroll si el contenido sobrepasa la altura del navegador */
+    height: auto; /* Altura adaptable al contenido */
+}
+#sidePanel.open {
+    right: 0;
+}
+#toggleButton {
+    position: fixed;
+    top: 10px;
+    right: 0; /* Ajustar para pegar el botón al borde derecho */
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100;
+    border-radius: 5px 0px 0px 5px;
+    transition: right 0.5s ease;
+	font-size: 11px;
+}
+
+#toggleButton.open {
+    right: 22rem; /* Esta propiedad se mantiene para cuando el panel lateral esté abierto */
+}
+.sinbordedown{
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+.sinbordetop{
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+/* Estilo para el subpanel */
+#subPanel {
+    position: fixed;
+    bottom: -20rem;
+    right: -22rem;
+    width: 22rem;
+    height: 8rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    z-index: 1060;
+    padding: 20px;
+    transition: bottom 0.5s ease, right 0.5s ease;
+    overflow-y: auto;
+}
+#subPanel.open {
+    bottom: 0;
+    right: 0;
+}
+/* Card 1: Seleccionar Perfil */
+#card-perfiles .card-header {
+    background-color: #D3D3D3; /* Gris claro */
+	border-radius: 0px;
+}
+#card-perfiles .card-header a {
+    color: black !important; /* Forzar el color blanco */
+    text-decoration: none;
+}
+
+#card-perfiles .card-header a:hover {
+    color: black !important; /* Mantener color blanco al pasar el mouse */
+}
+/* Card 2: Seleccionar Proyecto */
+#card-plantillas .card-header {
+    background-color: #FFD700; /* Dorado */
+	border-radius: 0px;
+}
+#card-plantillas .card-header a {
+    color: black !important; /* Forzar el color blanco */
+    text-decoration: none;
+}
+
+#card-plantillas .card-header a:hover {
+    color: black !important; /* Mantener color blanco al pasar el mouse */
+}
+/* Card 3: Seleccionar Filas */
+#card-filas .card-header {
+    background-color: #90EE90; /* Verde claro */
+	border-radius: 0px;
+}
+#card-filas .card-header a {
+    color: black !important; /* Forzar el color blanco */
+    text-decoration: none;
+}
+
+#card-filas .card-header a:hover {
+    color: black !important; /* Mantener color blanco al pasar el mouse */
+}
+/* Card 4: Seleccionar Columnas */
+#card-columnas .card-header {
+    background-color: #1E90FF; /* Azul */
+	border-radius: 0px;
+	color: white;
+}
+/* Cambiar color del link "+ Agregar" dentro del card 4 a blanco */
+#card-columnas .card-header a {
+    color: white !important; /* Forzar el color blanco */
+    text-decoration: none;
+}
+
+#card-columnas .card-header a:hover {
+    color: white !important; /* Mantener color blanco al pasar el mouse */
+}
+
+/* Card 5: Seleccionar Requerimiento */
+#card-opciones .card-header {
+    background-color: #32CD32; /* Verde lima */
+	border-radius: 0px;
+	color: black !important;
+}
+
+/* Cambiar color de fondo de los items en el primer card (Perfiles) */
+#card-perfiles .list-group-item {
+    background-color: #E4E4E4; /* Gris claro */
+	border: 1px solid #BEBEBE;
+	font-size: 13px;
+	color: black;
+}
+
+/* Cambiar color de fondo de los items en el segundo card (Proyectos) */
+#card-plantillas .list-group-item {
+    background-color: #FFE96C; /* Amarillo claro */
+	border: 1px solid #E6C400;
+	font-size: 13px;
+	color: black;
+}
+#card-plantillas .card-body {
+    background-color: #FFEE91;
+}
+
+/* Cambiar color de fondo de los items en el tercer card (Filas) */
+#card-filas .list-group-item {
+    background-color: #BBF4BB; /* Verde claro */
+	border: 1px solid #82EC82;
+	font-size: 13px;
+	color: black;
+}
+
+/* Cambiar color de fondo de los items en el cuarto card (Columnas) */
+#card-columnas .list-group-item {
+    background-color: #64B1FF; /* Azul claro */
+	border: 1px solid #0683FF;
+	font-size: 13px;
+	color: black;
+}
+
+/* Cambiar color de fondo del card-body y select en el quinto card (Opciones) */
+#card-opciones .card-body {
+    background-color: #5CD85C; /* Verde claro */
+}
+
+#card-opciones .card-body select {
+    background-color: #5CD85C; /* Fondo del select */
+	border: 0px;
+	color: black;
+	font-size: 13px;
+}
+/* Quitar el borde azul cuando se selecciona el select en el quinto card */
+#card-opciones .card-body select:focus {
+    outline: none; /* Elimina el borde azul */
+    box-shadow: none; /* Remueve cualquier sombra que pueda aparecer */
+    border-color: transparent; /* Hace el borde invisible si es necesario */
+}
+
+.sinbordeabajo {
+  border-radius: 0%;
+}
+
+.sinbordearriba {
+  border-top: none !important;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+}

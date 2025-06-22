@@ -1,0 +1,22 @@
+.full-height {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Asegurar que todos los elementos tengan un borde superior */
+.list-group-item {
+    border-top: 1px solid #dee2e6; /* Asegura un borde superior */
+}
+
+
+
+#div-modal-paleta-mostrar .modal-header {
+    cursor: move;
+}
+#div-modal-paleta-mostrar.modal {
+    pointer-events: none;
+}
+#div-modal-paleta-mostrar .modal-dialog {
+    pointer-events: auto;
+}

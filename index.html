@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finareport</title>
+    <link href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" >
+    <link href="lib/jquery-ui-1.14.0/jquery-ui.min.css" rel="stylesheet">
+    <link href="lib/alertifyjs/css/alertify.min.css" rel="stylesheet">
+    <link href="lib/estilos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid full-height">
+		<img src="img/fondo_regilla.png" alt="Fondo Regilla"/>
+		<p>Generador de Reportes Financieros</p>
+		<p>Eficiencia en tus manos</p>
+	</div>
+
+    <!-- Panel lateral con cards -->
+    <div id="sidePanel">
+
+        <div class="card sinbordeabajo mt-2" id="card-perfiles">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <strong><i class="bi bi-person"></i> PERFIL</strong>
+                <a href="#" class="text-primary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#div_perfil_crear">
+					+ Agregar
+				</a>
+				<div class="d-none">
+					<i class="bi bi-list"></i>
+				</div>
+            </div>
+            <div class="card-body p-0">
+				<div class="d-flex text-body-secondary p-3 justify-content-center">
+					<p class="mb-0 small lh-sm">
+						Perfil no disponible
+					</p>
+				</div>
+            </div>
+        </div>
+		<div class="card sinbordearriba d-none" id="card-entidades">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <strong class="text-secondary">Entidades</strong>
+                <a href="#" class="text-primary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="">
+					+ Agregar
+				</a>
+            </div>
+            <div class="card-body p-0">
+				<div class="d-flex text-body-secondary p-3 justify-content-center">
+					<p class="pb-3 mb-0 small lh-sm">
+						Entidades no disponibles
+					</p>
+				</div>
+            </div>
+        </div>  
+
+        <div class="card mt-2 d-none" id="card-plantillas">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <strong><i class="bi bi-file-earmark-text"></i> PLANTILLAS</strong>
+                <a href="#" class="text-primary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#div_proyecto_crear">
+					<i class="bi bi-plus"></i> Agregar
+				</a>
+				<i class="bi bi-list"></i>
+            </div>
+            <div class="card-body p-0">
+				<div class="d-flex text-body-secondary p-3 justify-content-center">
+					<p class="pb-3 mb-0 small lh-sm">
+						Plantillas no disponibles
+					</p>
+				</div>
+            </div>
+        </div>
+
+		<div class="card mt-2 d-none" id="card-filas">
+			<div class="card-header d-flex justify-content-between align-items-center">
+				<strong><i class="bi bi-view-stacked"></i> FILAS</strong>
+				<a href="#" class="text-primary" style="text-decoration: none;">+ Agregar</a>
+				<i class="bi bi-list"></i>
+			</div>
+			<div class="card-body p-0">
+				<div class="list-group" id="list-group-rows" style="max-height: 18rem; overflow-y: auto;">
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemfila1">
+						<div class="d-flex gap-2 w-100">
+							<!-- Agrupamos el número y el contenido dentro de un solo div -->
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>
+								<div>
+									<p class="mb-0" style="line-height: 1;">Categoría Presupuestal</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: Todos</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemfila2">
+						<div class="d-flex gap-2 w-100">
+							<!-- Agrupamos el número y el contenido dentro de un solo div -->
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>
+								<div>
+									<p class="mb-0" style="line-height: 1;">Meta</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: Todos</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemfila3">
+						<div class="d-flex gap-2 w-100">
+							<!-- Agrupamos el número y el contenido dentro de un solo div -->
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>
+								<div>
+									<p class="mb-0" style="line-height: 1;">Año</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: Todos</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="card mt-2 d-none" id="card-columnas">
+			<div class="card-header d-flex justify-content-between align-items-center">
+				<strong><i class="bi bi-layout-three-columns"></i> COLUMNAS</strong>
+				<a href="#" class="text-primary" style="text-decoration: none;">+ Agregar</a>
+				<i class="bi bi-list"></i>
+			</div>
+			<div class="card-body p-0">
+				<div class="list-group" id="list-group-columns" style="max-height: 18rem; overflow-y: auto;">
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemColumna1">
+						<div class="d-flex gap-2 w-100">
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>
+								<div>
+									<p class="mb-0" style="line-height: 1;">PIA</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: Todos</small></p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Distribución: No distribuido</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemColumna2">
+						<div class="d-flex gap-2 w-100">
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>
+								<div>
+									<p class="mb-0" style="line-height: 1;">PIM</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: Todos</small></p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Distribución: No distribuito</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemColumna3">
+						<div class="d-flex gap-2 w-100">
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>								
+								<div>
+									<p class="mb-0" style="line-height: 1;">Devengado</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: > 3000</small></p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Distribución: No distribuido</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-2" id="itemColumna4">
+						<div class="d-flex gap-2 w-100">
+							<div class="d-flex align-items-start">
+								<span class="item-number"></span>								
+								<div>
+									<p class="mb-0" style="line-height: 1;">Girado</p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Filtro: > 3000</small></p>
+									<p class="mb-0 opacity-90" style="line-height: 1;"><small class="opacity-50 text-nowrap">Distribución: No distribuido</small></p>
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+    </div>
+
+    <!-- Subpanel que se muestra al seleccionar un item -->
+    <div id="subPanel">
+        <p>Item seleccionado: <span id="selectedItemId"></span></p>
+		<button type="button" class="btn btn-primary">Exportar</button>
+    </div>
+
+    <!-- Botón flotante en la esquina superior derecha para mostrar/ocultar el panel -->
+    <button id="toggleButton">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+        </svg>
+    </button>
+	
+
+
+
+
+	<!-- Modales -->
+	<div class="modal fade" id="div_perfil_crear" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5">Agregar perfil</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<div class="col-12 mx-auto panel" id="panel-autenticacion">
+						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+							<h4 class="text-center mb-4">Autentifíquese</h4>
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+								<label for="floatingInput">Correo electrónico</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<label for="floatingPassword">Contraseña</label>
+							</div>
+							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Autenticar</button>
+							<hr class="my-4">
+							<div class="d-flex justify-content-center gap-4">
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_olvide_contrasena_escena">Olvidé mi contraseña</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_nuevo_usuario_escena">Soy nuevo usuario</a>
+							</div>
+						</form>
+					</div>
+					<div class="col-12 mx-auto panel d-none" id="panel-nuevapersona">
+						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+							<h4 class="text-center mb-4">Nuevo Usuario</h4>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="ipt_nombreapellido_crear" placeholder="name@example.com">
+								<label for="ipt_nombreapellido_crear">Nombres y apellidos</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="tel" class="form-control" id="ipt_celular_crear" placeholder="name@example.com">
+								<label for="ipt_celular_crear">Celular</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="ipt_correo_crear" placeholder="name@example.com">
+								<label for="ipt_correo_crear">Correo electrónico</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<label for="floatingPassword">Contraseña</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+								<label for="floatingPassword">Repetir Contraseña</label>
+							</div>
+							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Autenticar</button>
+							<hr class="my-4">
+							<div class="d-flex justify-content-center gap-4">
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_usuario_escena">Autenticación</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_olvide_clave_escena">Olvidé mi contraseña</a>
+							</div>
+						</form>
+					</div>
+					<div class="col-12 mx-auto panel d-none" id="panel-olvidecontrasena">
+						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+							<h4 class="text-center mb-4">Recuperar Cuenta</h4>
+							<div class="card p-3 bg-primary">
+								<div class="form-floating mb-3">
+									<input type="email" class="form-control" id="ipt_correo_recuperar" placeholder="name@example.com">
+									<label for="ipt_correo_recuperar">Ingrese su correo electrónico</label>
+								</div>
+								<button class="w-100 btn btn-lg btn-secondary" id="btn_enviar_codigo">Enviar código a correo</button>
+							</div>
+							<div class="card p-3 bg-secondary">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="ipt_codigo_recuperar" placeholder="name@example.com">
+									<label for="ipt_codigo_recuperar">Ingresar código de recuperación</label>
+								</div>
+								<button class="w-100 btn btn-lg btn-success" id="btn_validar_codigo">Validar código</button>
+							</div>
+							<div class="card p-3 bg-success">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="ipt_nuevaclave_recuperar" placeholder="Password">
+									<label for="ipt_nuevaclave_recuperar">Ingrese Nueva Contraseña</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="password" class="form-control" id="ipt_repitanuevaclave_recuperar" placeholder="Password">
+									<label for="ipt_repitanuevaclave_recuperar">Repetir Contraseña</label>
+								</div>
+								<button class="w-100 btn btn-lg btn-primary botones_acciones">Guardar acceso</button>
+							</div>
+							<hr class="my-4">
+							<div class="d-flex justify-content-center gap-4">
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_regreso_escena">Autenticarme</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_nuevousuario_regreso_escena">Soy nuevo usuario</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="modal fade" id="div_proyecto_crear" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5">Crear Proyecto</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="ipt_nomproyecto_crear" placeholder="">
+						<label for="ipt_nomproyecto_crear">Escriba aqui el nombre de su Proyecto</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Crear</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/jquery-ui-1.14.0/jquery-ui.min.js"></script>
+    <script src="lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/alertifyjs/alertify.min.js"></script>
+    <script src="lib/eventos.js"></script>
+</body>
+</html>
