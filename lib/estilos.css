@@ -230,3 +230,9 @@
   border-top-left-radius: 0%;
   border-top-right-radius: 0%;
 }
+.input-group-text{
+    cursor: pointer;
+}
+.input-group-text:hover{
+    background-color: #E4E4E4;
+}

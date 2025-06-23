@@ -208,83 +208,96 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 				<div class="modal-body">
+					<!-- Panel de Autenticación -->
 					<div class="col-12 mx-auto panel" id="panel-autenticacion">
 						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
 							<h4 class="text-center mb-4">Autentifíquese</h4>
-							<div class="form-floating mb-3">
-								<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-								<label for="floatingInput">Correo electrónico</label>
+							<div class="input-group mb-3">
+								<div class="form-floating">
+									<input type="email" class="form-control" id="ipt_correo_autenticar" placeholder="Autenticar Correo Electrónico">
+									<label for="ipt_correo_autenticar">Correo electrónico</label>
+								</div>
+								<span class="input-group-text" id="ipt_correo_autenticar-limpiar">
+									<i class="bi bi-x"></i>
+								</span>
 							</div>
-							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-								<label for="floatingPassword">Contraseña</label>
+							<div class="input-group mb-3">
+								<div class="form-floating">
+									<input type="password" class="form-control" id="ipt_contrasena_autenticar" placeholder="Autenticar Contraseña">
+									<label for="ipt_contrasena_autenticar">Contraseña</label>
+								</div>
+								<div class="input-group-text" id="ipt_contrasena_autenticar-limpiar">
+									<i class="bi bi-x"></i>
+								</div>
 							</div>
 							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Autenticar</button>
 							<hr class="my-4">
 							<div class="d-flex justify-content-center gap-4">
 								<a class="link-opacity-100 botones_escenas" href="#" id="btn_olvide_contrasena_escena">Olvidé mi contraseña</a>
-								<a class="link-opacity-100 botones_escenas" href="#" id="btn_nuevo_usuario_escena">Soy nuevo usuario</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_nuevo_usuario_escena">No tengo un Perfil</a>
 							</div>
 						</form>
 					</div>
+					<!-- Panel de Crear Usuario -->
 					<div class="col-12 mx-auto panel d-none" id="panel-nuevapersona">
 						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
 							<h4 class="text-center mb-4">Nuevo Usuario</h4>
 							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="ipt_nombreapellido_crear" placeholder="name@example.com">
+								<input type="text" class="form-control" id="ipt_nombreapellido_crear" placeholder="Crear Nombre y Apellidos">
 								<label for="ipt_nombreapellido_crear">Nombres y apellidos</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="tel" class="form-control" id="ipt_celular_crear" placeholder="name@example.com">
+								<input type="tel" class="form-control" id="ipt_celular_crear" placeholder="Crear Numero de Celular">
 								<label for="ipt_celular_crear">Celular</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="email" class="form-control" id="ipt_correo_crear" placeholder="name@example.com">
+								<input type="email" class="form-control" id="ipt_correo_crear" placeholder="Crear Correo Electrónico">
 								<label for="ipt_correo_crear">Correo electrónico</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-								<label for="floatingPassword">Contraseña</label>
+								<input type="password" class="form-control" id="ipt_contrasena_crear" placeholder="Crear Contraseña">
+								<label for="ipt_contrasena_crear">Contraseña</label>
 							</div>
 							<div class="form-floating mb-3">
-								<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-								<label for="floatingPassword">Repetir Contraseña</label>
+								<input type="password" class="form-control" id="ipt_contrasenarepetida_crear" placeholder="Repetir Contraseña Creada">
+								<label for="ipt_contrasenarepetida_crear">Repetir Contraseña</label>
 							</div>
-							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Autenticar</button>
+							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Crear usuario</button>
 							<hr class="my-4">
 							<div class="d-flex justify-content-center gap-4">
-								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_usuario_escena">Autenticación</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_usuario_escena">Autenticarme</a>
 								<a class="link-opacity-100 botones_escenas" href="#" id="btn_olvide_clave_escena">Olvidé mi contraseña</a>
 							</div>
 						</form>
 					</div>
+					<!-- Panel de Recuperar Cuenta -->
 					<div class="col-12 mx-auto panel d-none" id="panel-olvidecontrasena">
 						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
 							<h4 class="text-center mb-4">Recuperar Cuenta</h4>
 							<div class="card p-3 bg-primary">
 								<div class="form-floating mb-3">
-									<input type="email" class="form-control" id="ipt_correo_recuperar" placeholder="name@example.com">
+									<input type="email" class="form-control" id="ipt_correo_recuperar" placeholder="Ingrear Correo a Recuperar">
 									<label for="ipt_correo_recuperar">Ingrese su correo electrónico</label>
 								</div>
 								<button class="w-100 btn btn-lg btn-secondary" id="btn_enviar_codigo">Enviar código a correo</button>
 							</div>
 							<div class="card p-3 bg-secondary">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="ipt_codigo_recuperar" placeholder="name@example.com">
+									<input type="text" class="form-control" id="ipt_codigo_recuperar" placeholder="Ingreasar Código de Recuperación">
 									<label for="ipt_codigo_recuperar">Ingresar código de recuperación</label>
 								</div>
 								<button class="w-100 btn btn-lg btn-success" id="btn_validar_codigo">Validar código</button>
 							</div>
 							<div class="card p-3 bg-success">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="ipt_nuevaclave_recuperar" placeholder="Password">
+									<input type="text" class="form-control" id="ipt_nuevaclave_recuperar" placeholder="Ingresar Nueva Clave Recuperado">
 									<label for="ipt_nuevaclave_recuperar">Ingrese Nueva Contraseña</label>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="password" class="form-control" id="ipt_repitanuevaclave_recuperar" placeholder="Password">
+									<input type="password" class="form-control" id="ipt_repitanuevaclave_recuperar" placeholder="Repita la clave Recuperada">
 									<label for="ipt_repitanuevaclave_recuperar">Repetir Contraseña</label>
 								</div>
-								<button class="w-100 btn btn-lg btn-primary botones_acciones">Guardar acceso</button>
+								<button class="w-100 btn btn-lg btn-primary botones_acciones">Recuperar Acceso</button>
 							</div>
 							<hr class="my-4">
 							<div class="d-flex justify-content-center gap-4">
@@ -297,6 +310,7 @@
 			</div>
 		</div>
 	</div>
+
 
 
 
