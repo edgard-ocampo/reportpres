@@ -1,0 +1,5 @@
+databases:
+  - name: reportpres-db
+    databaseName: reportpres_bd
+    user: reportpres_user
+    plan: free
