@@ -65,7 +65,7 @@
 #toggleButton {
     position: fixed;
     top: 10px;
-    right: 0; /* Ajustar para pegar el botón al borde derecho */
+    right: 0;
     background-color: rgba(0, 0, 0, 0.7);
     border: none;
     color: white;
@@ -73,9 +73,16 @@
     cursor: pointer;
     z-index: 1100;
     border-radius: 5px 0px 0px 5px;
-    transition: right 0.5s ease;
-	font-size: 11px;
+    transition: right 0.5s ease, opacity 0.5s ease; /* <-- agregamos transición de opacidad */
+    font-size: 11px;
+    opacity: 1; /* Estado visible por defecto */
 }
+
+#toggleButton.oculto-suave {
+    opacity: 0;
+    pointer-events: none; /* evita clics mientras desaparece */
+}
+
 
 #toggleButton.open {
     right: 22rem; /* Esta propiedad se mantiene para cuando el panel lateral esté abierto */
@@ -87,24 +94,6 @@
 .sinbordetop{
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
-}
-/* Estilo para el subpanel */
-#subPanel {
-    position: fixed;
-    bottom: -20rem;
-    right: -22rem;
-    width: 22rem;
-    height: 8rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    z-index: 1060;
-    padding: 20px;
-    transition: bottom 0.5s ease, right 0.5s ease;
-    overflow-y: auto;
-}
-#subPanel.open {
-    bottom: 0;
-    right: 0;
 }
 /* Card 1: Seleccionar Perfil */
 #card-perfiles .card-header {

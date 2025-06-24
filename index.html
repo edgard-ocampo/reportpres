@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Finareport 2</title>
+    <title>Finareport</title>
     <link href="lib/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" >
     <link href="lib/jquery-ui-1.14.0/jquery-ui.min.css" rel="stylesheet">
@@ -22,7 +22,10 @@
 
         <div class="card sinbordeabajo mt-2" id="card-perfiles">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <strong><i class="bi bi-person"></i> PERFIL</strong>
+				<button type="button" class="btn-close" aria-label="Close" id="btn_cerrar_paneles"></button>
+                <strong>
+					<i class="bi bi-person"></i> PERFIL
+				</strong>
                 <a href="#" class="text-primary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#div_perfil_crear">
 					+ Agregar
 				</a>
@@ -178,27 +181,13 @@
 				</div>
 			</div>
 		</div>
-
-    </div>
-
-    <!-- Subpanel que se muestra al seleccionar un item -->
-    <div id="subPanel">
-        <p>Item seleccionado: <span id="selectedItemId"></span></p>
-		<button type="button" class="btn btn-primary">Exportar</button>
     </div>
 
     <!-- Botón flotante en la esquina superior derecha para mostrar/ocultar el panel -->
     <button id="toggleButton">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
-            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-        </svg>
+		<i class="bi bi-view-stacked"></i>
     </button>
 	
-
-
-
-
 	<!-- Modales -->
 	<div class="modal fade" id="div_perfil_crear" tabindex="-1">
 		<div class="modal-dialog">
@@ -228,6 +217,9 @@
 								</div>
 								<div class="input-group-text" id="ipt_contrasena_autenticar-limpiar">
 									<i class="bi bi-x"></i>
+								</div>
+								<div class="input-group-text" id="btn_mostrar_ocultar_clave">
+									<i class="bi bi-eye-slash"></i>
 								</div>
 							</div>
 							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Autenticar</button>
@@ -262,7 +254,7 @@
 								<input type="password" class="form-control" id="ipt_contrasenarepetida_crear" placeholder="Repetir Contraseña Creada">
 								<label for="ipt_contrasenarepetida_crear">Repetir Contraseña</label>
 							</div>
-							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit">Crear usuario</button>
+							<button class="w-100 btn btn-lg btn-primary botones_acciones" type="submit" id="btn_crear_usuario">Crear usuario</button>
 							<hr class="my-4">
 							<div class="d-flex justify-content-center gap-4">
 								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_usuario_escena">Autenticarme</a>
@@ -270,34 +262,16 @@
 							</div>
 						</form>
 					</div>
-					<!-- Panel de Recuperar Cuenta -->
-					<div class="col-12 mx-auto panel d-none" id="panel-olvidecontrasena">
+					<!-- Panel de Enviar Correo a Recuperar -->
+					<div class="col-12 mx-auto panel d-none" id="panel-correorecuperar">
 						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-							<h4 class="text-center mb-4">Recuperar Cuenta</h4>
+							<h4 class="text-center mb-4">Envío de Correo</h4>
 							<div class="card p-3 bg-primary">
 								<div class="form-floating mb-3">
 									<input type="email" class="form-control" id="ipt_correo_recuperar" placeholder="Ingrear Correo a Recuperar">
 									<label for="ipt_correo_recuperar">Ingrese su correo electrónico</label>
 								</div>
 								<button class="w-100 btn btn-lg btn-secondary" id="btn_enviar_codigo">Enviar código a correo</button>
-							</div>
-							<div class="card p-3 bg-secondary">
-								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="ipt_codigo_recuperar" placeholder="Ingreasar Código de Recuperación">
-									<label for="ipt_codigo_recuperar">Ingresar código de recuperación</label>
-								</div>
-								<button class="w-100 btn btn-lg btn-success" id="btn_validar_codigo">Validar código</button>
-							</div>
-							<div class="card p-3 bg-success">
-								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="ipt_nuevaclave_recuperar" placeholder="Ingresar Nueva Clave Recuperado">
-									<label for="ipt_nuevaclave_recuperar">Ingrese Nueva Contraseña</label>
-								</div>
-								<div class="form-floating mb-3">
-									<input type="password" class="form-control" id="ipt_repitanuevaclave_recuperar" placeholder="Repita la clave Recuperada">
-									<label for="ipt_repitanuevaclave_recuperar">Repetir Contraseña</label>
-								</div>
-								<button class="w-100 btn btn-lg btn-primary botones_acciones">Recuperar Acceso</button>
 							</div>
 							<hr class="my-4">
 							<div class="d-flex justify-content-center gap-4">
@@ -306,30 +280,35 @@
 							</div>
 						</form>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-
-
-
-	<div class="modal fade" id="div_proyecto_crear" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5">Crear Proyecto</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-				<div class="modal-body">
-					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="ipt_nomproyecto_crear" placeholder="">
-						<label for="ipt_nomproyecto_crear">Escriba aqui el nombre de su Proyecto</label>
+					<!-- Panel de Autenticación de código -->
+					<div class="col-12 mx-auto panel d-none" id="panel-procesorecuperacion">
+						<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+							<h4 class="text-center mb-4">Autenticación de Código</h4>
+							<div class="card p-3 bg-secondary">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="ipt_codigo_recuperar" placeholder="Ingreasar Código de Recuperación">
+									<label for="ipt_codigo_recuperar">Ingresar código de recuperación</label>
+								</div>
+								<button class="w-100 btn btn-lg btn-success" id="btn_validar_codigo">Validar código</button>
+							</div>
+							<div class="card p-3 bg-success d-none" id="contenedor_recuperar_contrasena">
+								<div class="form-floating mb-3">
+									<input type="password" class="form-control" id="ipt_nuevaclave_recuperar" placeholder="Ingresar Nueva Clave Recuperado">
+									<label for="ipt_nuevaclave_recuperar">Ingrese Nueva Contraseña</label>
+								</div>
+								<div class="form-floating mb-3">
+									<input type="password" class="form-control" id="ipt_repitanuevaclave_recuperar" placeholder="Repita la clave Recuperada">
+									<label for="ipt_repitanuevaclave_recuperar">Repetir Contraseña</label>
+								</div>
+								<button class="w-100 btn btn-lg btn-primary botones_acciones" id="btn_recuperar_acceso">Recuperar Acceso</button>
+							</div>
+							<hr class="my-4">
+							<div class="d-flex justify-content-center gap-4">
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_autenticar_regreso_escena">Autenticarme</a>
+								<a class="link-opacity-100 botones_escenas" href="#" id="btn_nuevousuario_regreso_escena">Soy nuevo usuario</a>
+							</div>
+						</form>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Crear</button>
 				</div>
 			</div>
 		</div>
